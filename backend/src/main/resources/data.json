@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Juan",
+    "createdAt": "2020-09-13"
+  },
+  {
+    "id": 2,
+    "name": "Maria",
+    "createdAt": "2020-09-14"
+  },
+  {
+    "id": 3,
+    "name": "Vicente",
+    "createdAt": "2020-09-15"
+  }
+]

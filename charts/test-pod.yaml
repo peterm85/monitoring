@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: test2
+  name: test2
+  namespace: ns1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: test2
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: test2
+    spec:
+      containers:
+      - image: busybox
+        name: test2
+        resources: {}
+        command: ["echo", "Hola"]
+status: {}

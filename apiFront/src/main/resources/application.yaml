@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: apifront
+server:
+  port: 8080
+  
+backend:
+  name: ${backend_name}
+  url: ${backend_path}
