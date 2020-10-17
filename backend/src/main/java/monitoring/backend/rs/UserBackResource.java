@@ -1,9 +1,9 @@
 package monitoring.backend.rs;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +36,10 @@ public class UserBackResource {
         log.info("Processing GET request: {} | requestUuid={}", Paths.USER_BACKEND, uuid);
 
         try {
-            final List<User> users = jsonUtilities.readFromJson("src/main/resources/data.json", new TypeReference<List<User>>() {});
-            return new ResponseEntity<>(users, HttpStatus.OK);
-        } catch (IOException e) {
-            log.error("requestUuid = {} - Data not found: {}", uuid, e.getMessage());
-            return new ResponseEntity<>(Map.of("uuid", uuid), HttpStatus.NOT_FOUND);
+            final List<User> users = jsonUtilities.readFromJson("data.json", new TypeReference<List<User>>() {});
+            return getResponse("GET", HttpStatus.OK, users, uuid);
+        } catch (IOException | URISyntaxException e) {
+            return getErrorResponse("GET", HttpStatus.NOT_FOUND, "Data not found "+ e.getMessage(), uuid);
         }
     }
 
@@ -50,12 +49,7 @@ public class UserBackResource {
 
         ResponseEntity response;
         if(id%7==0) {//Bug
-            log.error("User not found on requestUuid = {}", uuid);
-
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.set("uuid", uuid.toString());
-
-            response = new ResponseEntity<String>("User not found", responseHeaders, HttpStatus.NOT_FOUND);
+            response = getErrorResponse("GET", HttpStatus.NOT_FOUND, "User not found", uuid);
         }else {
             final User user = User.builder()
                     .id(id)
@@ -63,8 +57,21 @@ public class UserBackResource {
                     .createdAt(new Date())
                     .build();
 
-            response = new ResponseEntity<>(user, HttpStatus.OK);
+            response = getResponse("GET", HttpStatus.OK, user, uuid);
         }
         return response;
+    }
+    
+    private ResponseEntity getResponse(final String method, final HttpStatus status, final Object body, final UUID uuid) {
+        log.info("Response to {} {} request with status {} and body {} | requestUuid={}", Paths.USER_BACKEND, method, status, body, uuid);
+        return new ResponseEntity<>(body, status);
+    }
+    
+    private ResponseEntity getErrorResponse(final String method, final HttpStatus status, final String message, final UUID uuid) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("uuid", uuid.toString());
+        
+        log.info("Response to {} {} request with status {} and body {} | requestUuid={}", Paths.USER_BACKEND, method, status, message, uuid);
+        return new ResponseEntity<>(message, responseHeaders, status);
     }
 }
