@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  api-front-svc:
+    image: petermichael85/apifront:0.0.2
+    build: ../apiFront
+    container_name: api-front
+    ports:
+     - "8080:8080"
+    environment:
+     - backend_path=http://backend-svc:8081
+
+  backend-svc:
+    image: petermichael85/backend:0.0.3
+    build: ../backend
+    container_name: backend
+    ports:
+     - "8081:8081"
+
+#####################################
+# docker-compose up

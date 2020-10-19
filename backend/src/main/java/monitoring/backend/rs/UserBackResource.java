@@ -1,7 +1,6 @@
 package monitoring.backend.rs;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -37,9 +36,9 @@ public class UserBackResource {
 
         try {
             final List<User> users = jsonUtilities.readFromJson("data.json", new TypeReference<List<User>>() {});
-            return getResponse("GET", HttpStatus.OK, users, uuid);
-        } catch (IOException | URISyntaxException e) {
-            return getErrorResponse("GET", HttpStatus.NOT_FOUND, "Data not found "+ e.getMessage(), uuid);
+            return getResponse("GET", HttpStatus.OK, Paths.USER_BACKEND, users, uuid);
+        } catch (IOException e) {
+            return getErrorResponse("GET", HttpStatus.NOT_FOUND, Paths.USER_BACKEND, "Data not found: "+ e.getMessage(), uuid);
         }
     }
 
@@ -49,7 +48,7 @@ public class UserBackResource {
 
         ResponseEntity response;
         if(id%7==0) {//Bug
-            response = getErrorResponse("GET", HttpStatus.NOT_FOUND, "User not found", uuid);
+            response = getErrorResponse("GET", HttpStatus.NOT_FOUND, Paths.USER_BACKEND+"/"+id, "User not found", uuid);
         }else {
             final User user = User.builder()
                     .id(id)
@@ -57,21 +56,21 @@ public class UserBackResource {
                     .createdAt(new Date())
                     .build();
 
-            response = getResponse("GET", HttpStatus.OK, user, uuid);
+            response = getResponse("GET", HttpStatus.OK, Paths.USER_BACKEND+"/"+id, user, uuid);
         }
         return response;
     }
     
-    private ResponseEntity getResponse(final String method, final HttpStatus status, final Object body, final UUID uuid) {
-        log.info("Response to {} {} request with status {} and body {} | requestUuid={}", Paths.USER_BACKEND, method, status, body, uuid);
+    private ResponseEntity getResponse(final String method, final HttpStatus status, final String uri, final Object body, final UUID uuid) {
+        log.info("Response to {} {} request with status {} and body {} | requestUuid={}", uri, method, status, body, uuid);
         return new ResponseEntity<>(body, status);
     }
     
-    private ResponseEntity getErrorResponse(final String method, final HttpStatus status, final String message, final UUID uuid) {
+    private ResponseEntity getErrorResponse(final String method, final HttpStatus status, final String uri, final String message, final UUID uuid) {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("uuid", uuid.toString());
         
-        log.info("Response to {} {} request with status {} and body {} | requestUuid={}", Paths.USER_BACKEND, method, status, message, uuid);
+        log.info("Response to {} {} request with status {} and body {} | requestUuid={}", uri, method, status, message, uuid);
         return new ResponseEntity<>(message, responseHeaders, status);
     }
 }

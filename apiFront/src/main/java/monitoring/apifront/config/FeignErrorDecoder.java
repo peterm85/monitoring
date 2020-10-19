@@ -14,7 +14,7 @@ public class FeignErrorDecoder implements ErrorDecoder {
     @Override
     public Exception decode(String methodKey, Response response) {
         log.error("Status code " + response.status() + " on methodKey = " + methodKey + " with headers = "
-                + response.headers());
+                + response.headers() +" by reasons = "+ response.reason());
         switch (response.status()) {
         case 400:
             return new ResponseStatusException(HttpStatus.valueOf(response.status()), "Bad request");
