@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: client
+  namespace: ns1
+spec:
+  template:
+    spec:
+      containers:
+      - image: busybox
+        name: client
+        command: ["sh", "-c"]
+        args: [wget http://apifront-svc:8080/api/users; for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15; do wget http://apifront-svc:8080/api/users/$i; done;]
+      restartPolicy: Never
+  backoffLimit: 1

@@ -1,0 +1,102 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
+  labels:
+    name: monitoring
+
+---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns1
+  labels:
+    name: ns1
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: backend
+  name: backend
+  namespace: ns1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - image: petermichael85/backend:0.0.3
+        name: backend
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: backend
+  name: backend-svc
+  namespace: ns1
+spec:
+  ports:
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081
+  selector:
+    app: backend
+  type: ClusterIP
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: apifront
+  name: apifront
+  namespace: ns1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: apifront
+  template:
+    metadata:
+      labels:
+        app: apifront
+    spec:
+      containers:
+      - image: petermichael85/apifront:0.0.2
+        name: apifront
+        env:
+        - name: backend_path
+          value: http://backend-svc:8081
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: apifront
+  name: apifront-svc
+  namespace: ns1
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: apifront
+  type: ClusterIP
