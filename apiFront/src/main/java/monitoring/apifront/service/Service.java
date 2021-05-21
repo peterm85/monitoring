@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 @FeignClient(name = "backend", url = "${backend.path}")
 public interface Service {
 
-    @GetMapping(value = Paths.USER_BACK, consumes = MediaType.APPLICATION_JSON_VALUE)
-    List<User> getUsers(@RequestHeader("uuid") final UUID uuid);
+  @GetMapping(value = Paths.USER_BACK, consumes = MediaType.APPLICATION_JSON_VALUE)
+  List<User> getUsers(@RequestHeader("uuid") final UUID uuid);
 
-    @GetMapping(value = Paths.USER_BACK+Paths.ID, consumes = MediaType.APPLICATION_JSON_VALUE)
-    User getUser(@RequestHeader("uuid") final UUID uuid, @PathVariable("id") final Long id);
+  @GetMapping(value = Paths.USER_BACK + Paths.ID, consumes = MediaType.APPLICATION_JSON_VALUE)
+  User getUser(@RequestHeader("uuid") final UUID uuid, @PathVariable("id") final Long id);
 }

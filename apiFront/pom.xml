@@ -11,13 +11,14 @@
     </parent>
     <groupId>monitoring</groupId>
     <artifactId>apifront</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>apiFront</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>11</java.version>
         <spring-openfeign.version>2.1.1.RELEASE</spring-openfeign.version>
+        <fmt-plugin.version>2.10</fmt-plugin.version>
     </properties>
 
     <dependencies>
@@ -56,6 +57,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+            <version>${spring-openfeign.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -63,6 +71,19 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.coveo</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <version>${fmt-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
