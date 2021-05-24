@@ -34,7 +34,7 @@ spec:
         app: backend
     spec:
       containers:
-      - image: petermichael85/backend:0.0.3
+      - image: petermichael85/backend:0.0.4
         name: backend
 
 ---
@@ -76,7 +76,7 @@ spec:
         app: apifront
     spec:
       containers:
-      - image: petermichael85/apifront:0.0.2
+      - image: petermichael85/apifront:0.0.3
         name: apifront
         env:
         - name: backend_path

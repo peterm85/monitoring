@@ -2,7 +2,7 @@ version: '3'
 
 services:
   api-front-svc:
-    image: petermichael85/apifront:0.0.2
+    image: petermichael85/apifront:0.0.3
     build: ../apiFront
     container_name: api-front
     ports:
@@ -11,7 +11,7 @@ services:
      - backend_path=http://backend-svc:8081
 
   backend-svc:
-    image: petermichael85/backend:0.0.3
+    image: petermichael85/backend:0.0.4
     build: ../backend
     container_name: backend
     ports:
