@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: kibana
-        image: docker.elastic.co/kibana/kibana:6.5.4
+        image: docker.elastic.co/kibana/kibana:7.12.1
         env:
-        - name: ELASTICSEARCH_URL
+        - name: ELASTICSEARCH_HOSTS
           value: http://elasticsearch-svc:9200
         - name: XPACK_SECURITY_ENABLED
           value: "true"
