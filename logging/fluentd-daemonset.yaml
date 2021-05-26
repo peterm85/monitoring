@@ -55,23 +55,21 @@ metadata:
   name: fluentd
   namespace: kube-system
   labels:
-    k8s-app: fluentd-logging
     version: v1
     kubernetes.io/cluster-service: "true"
 spec:
   selector:
     matchLabels:
-      name: fluentd-logging
+      app: fluentd
   template:
     metadata:
       labels:
-        k8s-app: fluentd-logging
         version: v1
         kubernetes.io/cluster-service: "true"
-        name: fluentd-logging
+        app: fluentd
     spec:
-      serviceAccount: fluentd
-      serviceAccountName: fluentd
+      serviceAccount: fluentd-sa
+      serviceAccountName: fluentd-sa
       tolerations:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule

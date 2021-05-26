@@ -6,11 +6,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      run: kibana
+      app: kibana
   template:
     metadata:
       labels:
-        run: kibana
+        app: kibana
     spec:
       containers:
       - name: kibana
@@ -37,7 +37,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    run: kibana
+    app: kibana
   ports:
   - port: 5601
     targetPort: 5601

@@ -1,17 +1,18 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: elasticsearch
   namespace: monitoring
 spec:
+  serviceName: elasticsearch-svc
   replicas: 1
   selector:
     matchLabels:
-      component: elasticsearch
+      app: elasticsearch
   template:
     metadata:
       labels:
-        component: elasticsearch
+        app: elasticsearch
     spec:
       containers:
       - name: elasticsearch
@@ -43,7 +44,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    component: elasticsearch
+    app: elasticsearch
   ports:
   - port: 9200
     targetPort: 9200
