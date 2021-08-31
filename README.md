@@ -1,6 +1,6 @@
 # Monitoriza tus sistemas
 
-*Read this document in [english](https://github.com/peterm85/monitoring/README_en.md)*
+*Read this document in [english](https://github.com/peterm85/monitoring/blob/master/README_en.md)*
 
 ## ¿Qué vamos a ver?
 

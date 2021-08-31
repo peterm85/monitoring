@@ -1,6 +1,6 @@
 # Monitoring your systems
 
-*Lea este documento en [español](https://github.com/peterm85/monitoring/README.md)*
+*Lea este documento en [español](https://github.com/peterm85/monitoring/blob/master/README.md)*
 
 ## What’s this all about?
 
