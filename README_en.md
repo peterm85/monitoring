@@ -1,6 +1,6 @@
 # Monitoring your systems
 
-*Lea este documento en [español](https://github.com/peterm85/monitoring#README.md)*
+*Lea este documento en [español](https://github.com/peterm85/monitoring/README.md)*
 
 ## What’s this all about?
 
@@ -33,6 +33,7 @@ They may seem similar, but we can see the differences more clearly with an analo
 <img src="doc/doctor.png" alt="Doctor"/>
 
 *«Monitoring tells you if the system is working. Observability allows you to ask why it’s not working.»*
+
 Baron Schwartz
 
 ### The three pillars of observability
@@ -57,7 +58,7 @@ Traces identify the flow of events in a distributed system. Tracing allows us to
 
 The more data we have about a system, the easier it is to detect what’s causing a problem. It’s up to systems architects to know how many signals are needed and how detailed they should be, depending on the complexity of the case.
 
-##Index:
+## Index:
 
 - [Logs](https://github.com/peterm85/monitoring/logging#README_en.md)
 - Metrics

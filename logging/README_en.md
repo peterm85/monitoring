@@ -233,6 +233,7 @@ spec:
 
 We can apply the changes with the following commands:
 > ``kubectl apply -f fluentd-rbac.yaml``
+
 > ``kubectl apply -f fluentd-daemonset.yaml``
 
 Just like with ElasticSearch, we’ll discuss some of its characteristics:
@@ -417,6 +418,7 @@ From my point of view, monitoring tools are fundamental for all systems. It’s 
 - Improves the efficiency of systems
 - Saves time and money
 - Frees up developers in terms of level 1 support
+
 Throughout my professional career, I’ve worked on many projects. I know all too well that there’s a huge difference between manual troubleshooting and doing it with these tools.
 
 <img src="doc/archAfter.png" alt="After"/>
@@ -428,6 +430,7 @@ To conclude, I’d just like to remind you about some important points that we�
 - And, of course, don’t include sensitive information in your application logs.
 
 *«What is not measured, cannot be improved. What is not improved is always degraded.»*
+
 Lord William Thomson Kelvin
 
 ## Resources

@@ -1,6 +1,6 @@
 # Monitoriza tus sistemas
 
-*Read this document in [english](https://github.com/peterm85/monitoring#README_en.md)*
+*Read this document in [english](https://github.com/peterm85/monitoring/README_en.md)*
 
 ## ¿Qué vamos a ver?
 
@@ -32,6 +32,7 @@ Quizás pueda parecer algo similar. Lo veremos más fácil con un ejemplo. Si lo
 <img src="doc/doctor.png" alt="Doctor"/>
 
 *«La monitorización te dice si el sistema funciona. La observabilidad te permite preguntar por qué no funciona.»*
+
 Baron Schwartz
 
 ### Los tres pilares de la observabilidad
@@ -56,7 +57,7 @@ Identifican el flujo de eventos en un sistema distribuido. Permite distinguir lo
 
 Cuantos más datos tengamos sobre un sistema, más fácil será detectar la causa de un problema. Estará en manos de los arquitectos de sistemas, dependiendo de la complejidad del caso, determinar cuántas señales serán suficientes y su grado de detalle. 
 
-##Índice:
+## Índice:
 
 - [Logs](https://github.com/peterm85/monitoring/logging#README.md)
 - Métricas

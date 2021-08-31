@@ -233,6 +233,7 @@ spec:
 
 Podremos aplicar los cambios con los siguientes comandos:
 > ``kubectl apply -f fluentd-rbac.yaml``
+
 > ``kubectl apply -f fluentd-daemonset.yaml``
 
 Tal y como hicimos en el apartado anterior, vamos a comentar algunas de sus características:
@@ -417,6 +418,7 @@ Las herramientas de monitorización son, desde mi punto de vista, algo fundament
 - Mejora de la eficiencia de los sistemas
 - Reducción de costes
 - Liberación de los desarrolladores en cuanto a soporte de nivel 1
+
 A lo largo de mi carrera profesional he trabajado en diferentes proyectos y reconozco que hay una diferencia considerable entre realizar un *troubleshooting* de forma manual a hacerlo con ayuda de estas herramientas.
 
 <img src="doc/archAfter.png" alt="After"/>
@@ -428,6 +430,7 @@ Para finalizar sólo me gustaría recordar algunos de los puntos importantes que
 - Y por supuesto, evita introducir información sensible en los logs de tus aplicaciones.
 
 *«Lo que no se define no se puede medir. Lo que no se mide, no se puede mejorar. Lo que no se mejora, se degrada siempre»*.
+
 William Thomson Kelvin
 
 ## Recursos
