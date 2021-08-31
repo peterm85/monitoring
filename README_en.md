@@ -60,7 +60,7 @@ The more data we have about a system, the easier it is to detect what’s causin
 
 ## Index:
 
-- [Logs](https://github.com/peterm85/monitoring/logging#README_en.md)
+- [Logs](https://github.com/peterm85/monitoring/blob/master/logging/README_en.md)
 - Metrics
 - Tracing
 

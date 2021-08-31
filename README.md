@@ -59,6 +59,6 @@ Cuantos más datos tengamos sobre un sistema, más fácil será detectar la caus
 
 ## Índice:
 
-- [Logs](https://github.com/peterm85/monitoring/logging#README.md)
+- [Logs](https://github.com/peterm85/monitoring/blob/master/logging/README.md)
 - Métricas
 - Trazas
